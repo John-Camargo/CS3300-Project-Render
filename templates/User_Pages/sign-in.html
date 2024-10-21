@@ -14,6 +14,7 @@ body
   font-family: Arial, Helvetica, sans-serif;
   margin-left: 150px;
   margin-right: 50px;
+  margin-bottom:0px;
 }
 
 /* Style the side navigation bar */
@@ -71,6 +72,7 @@ body
 {
   margin-left: 0px;
   padding: 10px;
+  margin-bottom: 0px;
   text-align: center;
   background: #111;
 }
@@ -84,11 +86,11 @@ body
 </style>
 </head>
 <!--Import css files as stylesheets-->
-<link rel="stylesheet" href="CSS_Files/headerstyle.css">
-<link rel="stylesheet" href="CSS_Files/sidebarbutton.css">
-<link rel="stylesheet" href="CSS_Files/sidebarstyle.css">
-<link rel="stylesheet" href="CSS_Files/userstyle.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Import icons-->
+<link rel="stylesheet" href="../CSS_Files/headerstyle.css">
+<link rel="stylesheet" href="../CSS_Files/sidebarbutton.css">
+<link rel="stylesheet" href="../CSS_Files/sidebarstyle.css">
+<link rel="stylesheet" href="../CSS_Files/userstyle.css">
+<link rel="stylesheet" href="/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Import icons-->
 <body>
 
 <!--User login icon displayed on top right of site-->
@@ -114,16 +116,19 @@ body
 </div>
 
 <div class="main">
-  <h2>Vehicle Price Estimator</h2>
-  <div class = "fakeimg" style = "height:175px; background-color: rgba(77, 121, 204, 0.5);">
-    <form action="/price_prediction" method="post">
-      <label for="vin">VIN:</label>
-      <input type="text" id="vin" name="vin" >
+  <h2>Log In</h2>
+  <div class = "fakeimg" style = "height160xpx; background-color: rgba(77, 121, 204, 0.5);">
+    <form action="/sign_in" method="post">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" >
 
-      <label for="miles1">Miles:</label>
-      <input type="number" id="miles1" name="miles1" ><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" ><br>
 
-      <b><br>Or<br></b/><br>
+      <h4>Don't have an account? <a href="register.html">Register</a></h4>
+
+      <!--
+      <b><br>Or<br></b><br>
 
       <label for="make">Make:</label>
       <input type="text" id="make" name="make" >
@@ -139,20 +144,11 @@ body
 
       <label for="Trim">Trim:</label>
       <input type="text" id="trim" name="trim" ><br>
-
-      <br>
+    -->
       <button type="submit">Submit</button></center/>
     </form>
   </div>
-  <h5>Title description</h5>
-  <div class="fakeimg" style="height:200px;">Image</div>
-  <p>Some text</p>
-  <p>Some more text</p>
-  <br>
-  <h2>New Section</h2>
-  <h5>description</h5>
-  <!-- <div class="fakeimg" style="height:200px;">Image?</div> -->
-  <p>Some text..</p>
+  
 
       
 </div>
