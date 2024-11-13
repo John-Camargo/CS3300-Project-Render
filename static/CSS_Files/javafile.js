@@ -13,7 +13,7 @@ function filterFunction(dropdownid, inputid)
   const a = div.getElementsByTagName("a");
   for (let i = 0; i < a.length; i++)
   {
-    txtValue = a[i].textContent || a[i].innerText;
+    let txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1)
     {
       a[i].style.display = "";
