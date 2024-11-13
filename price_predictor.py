@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import requests
 import os
 
@@ -25,6 +25,10 @@ def get_car_prediction(car_info, key, url):
 @app.route('/')
 def home():
     return render_template('index.html')
+
+# @app.route('/Buy')
+# def home():
+#     return render_template('Sidebar_Pages/buypage.html')
 
 @app.route('/price_prediction', methods=['POST'])
 def price_prediction():
