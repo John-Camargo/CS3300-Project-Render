@@ -115,8 +115,8 @@
   <!-- Sidebar Navigation Menu -->
   <div class="sidebar">
     <div class="sidebar-button">
-      <a style="font-size: 20px;" href="{{url_for('home')}}"></h1>--Project Name--</h1>
-      </a>
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='Images/logo.webp') }}" alt="Project Logo" style="height: auto; width:150px;"></a>    
       <a style="margin-top: 100px;" href="{{ url_for('buy_page') }}">Buy</a>
       <a href="{{ url_for('sell_page') }}">Sell</a>
       <a style="margin-top: 200px;" href="{{ url_for('contact_page') }}">Contact Us</a>
