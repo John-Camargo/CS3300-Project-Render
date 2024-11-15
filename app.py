@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, url_for 
 import requests
 import os
+import jinja2
 
 app = Flask(__name__)
 
@@ -26,10 +27,6 @@ def get_car_prediction(car_info, key, url):
 def home():
     return render_template('index.html')
 
-# @app.route('/Buy')
-# def home():
-#     return render_template('Sidebar_Pages/buypage.html')
-
 @app.route('/price_prediction', methods=['POST'])
 def price_prediction():
     car_info = {
@@ -50,6 +47,29 @@ def price_prediction():
         return render_template('results.html', prediction=prediction)
     else:
         return render_template('error.html', message="Failed to retrieve prediction.")
+   
+@app.route('/buy')
+def buy_page():
+    return render_template('Sidebar_Pages/buypage.html')
+
+@app.route('/sell')
+def sell_page():
+    return render_template('Sidebar_Pages/sellpage.html')
+
+@app.route('/contact')
+def contact_page():
+    return render_template('Sidebar_Pages/contactpage.html')
+@app.route('/about')
+def about_page():
+    return render_template('Sidebar_Pages/aboutpage.html')
+
+@app.route('/register')
+def register_page():
+    return render_template('User_Pages/register.html')
+
+@app.route('/sign-in')
+def sign_in_page():
+    return render_template('User_Pages/sign-in.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))  # Use the PORT environment variable

@@ -1,103 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>CS3160 Car Site</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+{% extends "base.html" %}
 
-body
-{
-  font-family: Arial, Helvetica, sans-serif;
-  margin-left: 150px;
-  margin-right: 50px;
-}
+{% block title %}Sign In - CS3300 Car Site{% endblock %}
 
-/* Style the side navigation bar */
-.navbar
-{
-  overflow: hidden;
-  margin-left: 25px;
-  background-color: #333;
-}
-
-/* Style the center navigation bar links */
-.navbar a
-{
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
-
-/* Right-aligned link */
-.navbar a.right
-{
-  float: right;
-}
-
-/* Change color on hover */
-.navbar a:hover
-{
-  background-color: #ddd;
-  color: black;
-}
-
-.header
-{
-  top: 50px;
-  color: #FFFFFF;
-
-  padding: 80px;
-  margin-left: 25px;
-  text-align: center;
-  height: 400px;
-}
-
-/*Font Style(s)*/
-.header h1
-{
-  font-size: 40px;
-  color: rgb(11, 11, 11);
-}
-
-/* Main column */
-.main
-{   
-  flex: 70%;
-  background-color: white;
-  padding: 5px;
-}
-
-/* Fake image, for sake of practice */
-.fakeimg
-{
-  background-color: #27c6df;
-  width: 100%;
-  padding: 20px;
-}
-
-/* Footer Style
-  - Contains links to legal, terms, and help.
-*/
-.footer
-{
-  margin-left: 0px;
-  padding: 10px;
-  text-align: center;
-  background: #111;
-}
-
-.main
-{
-  margin-left: 25px;
-  text-align: center;
-}
+{% block content %}
 
 </style>
 </head>
@@ -116,15 +21,7 @@ body
   </div>
 </div> -->
 
-<div class="user">
-  <div class="user-button" onclick="toggleUserDropdown()">
-    <i class="fa fa-user fa-2x"></i>
-  </div>
-  <div id="userDropdown" class="dropdown-content" style="display: none;">
-    <a href="../User_Pages/sign-in.html">Sign In</a>
-    <a href="../User_Pages/register.html">Register</a>
-  </div>
-</div>
+
 
 <!--Row of Dropdown Menus for Car Search-->
 <div class="header">
@@ -167,90 +64,82 @@ body
   <p>This is text i can change</p>
 </div>
 
-<div class="navbar">
-  <a href="">Link1</a>
-  <a href="">Link2</a>
-  <a href="">Link3</a>
-  <a href="" class="right">Link4</a>
-</div>
 
-<div class="main">
-  <h2>Vehicle Price Estimator</h2>
-  <h5>Title description</h5>
-  <div class="fakeimg" style="height:200px;">Image</div>
-  <p>Some text</p>
-  <p>Some more text</p>
-  <br>
-  <h2>New Section</h2>
-  <h5>description</h5>
-  <div class="fakeimg" style="height:200px;">Image?</div>
-  <p>Some text..</p>
-</div>
 
-<div class="footer">
-  <h2>Footer</h2>
-</div>
-
+<script src="../CSS_Files/javafile.js"></script>
+<!--
 <script>
-    /* When the user clicks on the button,
-    toggle between hiding and showing the dropdown content */
-    function myFunction(dropdownid)
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction(dropdownid)
+{
+  document.getElementById(dropdownid).classList.toggle("show");
+}
+
+function filterFunction(dropdownid, inputid)
+{
+  const input = document.getElementById(inputid);
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById(dropdownid);
+  const a = div.getElementsByTagName("a");
+  for (let i = 0; i < a.length; i++)
+  {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1)
     {
-      document.getElementById(dropdownid).classList.toggle("show");
+      a[i].style.display = "";
     }
-    
-    function filterFunction(dropdownid, inputid)
+    else
     {
-      const input = document.getElementById(inputid);
-      const filter = input.value.toUpperCase();
-      const div = document.getElementById(dropdownid);
-      const a = div.getElementsByTagName("a");
-      for (let i = 0; i < a.length; i++) {
-        txtValue = a[i].textContent || a[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          a[i].style.display = "";
-        } else {
-          a[i].style.display = "none";
-        }
-      }
+      a[i].style.display = "none";
     }
+  }
+}
 
-    function filterTable() {
-    const makeInput = document.getElementById("modelInput").value.toUpperCase();
-    const yearInput = document.getElementById("yearInput").value.toUpperCase();
-    const rows = document.querySelectorAll("#csvTable tbody tr");
+function filterTable() {
+const makeInput = document.getElementById("modelInput").value.toUpperCase();
+const yearInput = document.getElementById("yearInput").value.toUpperCase();
+const rows = document.querySelectorAll("#csvTable tbody tr");
 
-    rows.forEach(row => {
-        const make = row.cells[1].textContent.toUpperCase();
-        const year = row.cells[0].textContent.toUpperCase();
+rows.forEach(row =>
+{
+  const make = row.cells[1].textContent.toUpperCase();
+  const year = row.cells[0].textContent.toUpperCase();
 
-        // Check if row matches the filter
-        const makeMatch = make.indexOf(makeInput) > -1;
-        const yearMatch = year.indexOf(yearInput) > -1;
+  // Check if row matches the filter
+  const makeMatch = make.indexOf(makeInput) > -1;
+  const yearMatch = year.indexOf(yearInput) > -1;
 
-        if (makeMatch && yearMatch) {
-            row.style.display = "";
-        } else {
-            row.style.display = "none";
-        }
-    });
+  if (makeMatch && yearMatch)
+  {
+      row.style.display = "";
+  }
+  else
+  {
+      row.style.display = "none";
+  }
+});
 }
 
 // Call `filterTable` on keyup events for filtering inputs
 document.getElementById("modelInput").addEventListener('keyup', filterTable);
 document.getElementById("yearInput").addEventListener('keyup', filterTable);
 
-
-    function toggleUserDropdown() {
-      var dropdown = document.getElementById("userDropdown");
-      if (dropdown.style.display === "none" || dropdown.style.display === "") {
-        dropdown.style.display = "block";
-      } else {
-        dropdown.style.display = "none";
-      }
-    }
+function toggleUserDropdown()
+{
+  var dropdown = document.getElementById("userDropdown");
+  if (dropdown.style.display === "none" || dropdown.style.display === "")
+  {
+    dropdown.style.display = "block";
+  }
+  else
+  {
+    dropdown.style.display = "none";
+  }
+}
 
 </script>
+-->
 
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
@@ -330,3 +219,5 @@ document.getElementById("yearInput").addEventListener('keyup', filterTable);
 
 </body>
 </html>
+
+{% endblock %}
