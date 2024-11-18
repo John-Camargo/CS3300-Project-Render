@@ -23,7 +23,7 @@ def get_car_prediction(car_info, key, url):
     else:
         return None
 
-@app.route('/1-stop_car_shop')
+@app.route('/')
 def home():
     return render_template('index.html')
 
